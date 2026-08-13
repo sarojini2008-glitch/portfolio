@@ -1,0 +1,1119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alex — Student Portfolio</title>
+
+  <style>
+    /* =========================
+       RESET
+    ========================== */
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display",
+        "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+      background: #f5f5f7;
+      color: #1d1d1f;
+      line-height: 1.5;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    /* =========================
+       NAVIGATION
+    ========================== */
+
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 64px;
+      z-index: 1000;
+
+      background: rgba(255, 255, 255, 0.72);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+
+      border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    }
+
+    .nav-inner {
+      max-width: 1100px;
+      height: 100%;
+      margin: auto;
+      padding: 0 24px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 19px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+      list-style: none;
+      font-size: 14px;
+      color: #6e6e73;
+    }
+
+    .nav-links a {
+      transition: color 0.25s ease;
+    }
+
+    .nav-links a:hover {
+      color: #000;
+    }
+
+    /* =========================
+       HERO
+    ========================== */
+
+    .hero {
+      min-height: 100vh;
+      padding: 160px 24px 100px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      text-align: center;
+
+      background:
+        radial-gradient(
+          circle at 50% 30%,
+          rgba(0, 122, 255, 0.13),
+          transparent 35%
+        ),
+        #f5f5f7;
+    }
+
+    .hero-content {
+      max-width: 900px;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 22px;
+
+      font-size: 14px;
+      font-weight: 600;
+      color: #0071e3;
+
+      letter-spacing: 0.5px;
+    }
+
+    .hero h1 {
+      font-size: clamp(58px, 10vw, 120px);
+      line-height: 0.95;
+      letter-spacing: -7px;
+      font-weight: 700;
+
+      background: linear-gradient(
+        135deg,
+        #111 20%,
+        #555 50%,
+        #0071e3 90%
+      );
+
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-subtitle {
+      max-width: 650px;
+      margin: 35px auto 0;
+
+      font-size: clamp(21px, 3vw, 30px);
+      line-height: 1.25;
+      letter-spacing: -1px;
+      color: #6e6e73;
+    }
+
+    .hero-buttons {
+      margin-top: 42px;
+
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .button {
+      padding: 13px 23px;
+      border-radius: 999px;
+
+      font-size: 15px;
+      font-weight: 600;
+
+      transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-3px);
+    }
+
+    .button-primary {
+      background: #0071e3;
+      color: white;
+      box-shadow: 0 10px 30px rgba(0, 113, 227, 0.22);
+    }
+
+    .button-secondary {
+      background: rgba(255, 255, 255, 0.7);
+      border: 1px solid rgba(0, 0, 0, 0.08);
+    }
+
+    /* =========================
+       GENERAL SECTIONS
+    ========================== */
+
+    section {
+      padding: 120px 24px;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .section-label {
+      color: #0071e3;
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-size: clamp(40px, 6vw, 64px);
+      letter-spacing: -3px;
+      line-height: 1;
+      margin-bottom: 55px;
+    }
+
+    /* =========================
+       ABOUT
+    ========================== */
+
+    .about {
+      background: #fff;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 70px;
+      align-items: center;
+    }
+
+    .about-text {
+      font-size: 22px;
+      color: #6e6e73;
+      letter-spacing: -0.5px;
+    }
+
+    .about-text strong {
+      color: #1d1d1f;
+    }
+
+    .profile-card {
+      min-height: 420px;
+      padding: 40px;
+
+      border-radius: 32px;
+
+      background:
+        radial-gradient(
+          circle at 30% 20%,
+          rgba(255,255,255,0.4),
+          transparent 35%
+        ),
+        linear-gradient(145deg, #1d1d1f, #424245);
+
+      color: white;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.15);
+    }
+
+    .profile-avatar {
+      width: 75px;
+      height: 75px;
+
+      border-radius: 50%;
+
+      display: grid;
+      place-items: center;
+
+      background: linear-gradient(135deg, #0071e3, #7b2cff);
+
+      font-size: 27px;
+      font-weight: 700;
+    }
+
+    .profile-card h3 {
+      font-size: 34px;
+      letter-spacing: -1.5px;
+    }
+
+    .profile-card p {
+      color: #a1a1a6;
+    }
+
+    /* =========================
+       SKILLS
+    ========================== */
+
+    .skills {
+      background: #f5f5f7;
+    }
+
+    .skill-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .skill {
+      padding: 28px;
+      min-height: 150px;
+
+      border-radius: 24px;
+
+      background: rgba(255, 255, 255, 0.7);
+      border: 1px solid rgba(0, 0, 0, 0.05);
+
+      transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+    }
+
+    .skill:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.08);
+    }
+
+    .skill-icon {
+      font-size: 28px;
+      margin-bottom: 18px;
+    }
+
+    .skill h3 {
+      font-size: 18px;
+      margin-bottom: 5px;
+    }
+
+    .skill p {
+      color: #6e6e73;
+      font-size: 14px;
+    }
+
+    /* =========================
+       PROJECTS
+    ========================== */
+
+    .projects {
+      background: #000;
+      color: #fff;
+    }
+
+    .projects .section-label {
+      color: #2997ff;
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+
+    .project {
+      min-height: 480px;
+      padding: 38px;
+
+      border-radius: 30px;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+
+      overflow: hidden;
+      position: relative;
+
+      transition: transform 0.4s ease;
+    }
+
+    .project:hover {
+      transform: scale(1.015);
+    }
+
+    .project::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+
+      background:
+        radial-gradient(
+          circle at 70% 20%,
+          rgba(255,255,255,0.2),
+          transparent 30%
+        );
+    }
+
+    .project-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .project:nth-child(1) {
+      background:
+        linear-gradient(
+          145deg,
+          #0071e3,
+          #004c97
+        );
+    }
+
+    .project:nth-child(2) {
+      background:
+        linear-gradient(
+          145deg,
+          #7b2cff,
+          #3b176f
+        );
+    }
+
+    .project:nth-child(3) {
+      background:
+        linear-gradient(
+          145deg,
+          #ff375f,
+          #8e1230
+        );
+    }
+
+    .project:nth-child(4) {
+      background:
+        linear-gradient(
+          145deg,
+          #34c759,
+          #126d2c
+        );
+    }
+
+    .project-number {
+      font-size: 14px;
+      opacity: 0.7;
+      margin-bottom: 15px;
+    }
+
+    .project h3 {
+      font-size: 38px;
+      letter-spacing: -2px;
+      margin-bottom: 10px;
+    }
+
+    .project p {
+      color: rgba(255,255,255,0.75);
+      max-width: 430px;
+    }
+
+    .project-link {
+      display: inline-block;
+      margin-top: 25px;
+      font-weight: 600;
+    }
+
+    /* =========================
+       EDUCATION
+    ========================== */
+
+    .education {
+      background: #fff;
+    }
+
+    .timeline {
+      border-left: 2px solid #d2d2d7;
+      padding-left: 35px;
+    }
+
+    .timeline-item {
+      margin-bottom: 55px;
+      position: relative;
+    }
+
+    .timeline-item::before {
+      content: "";
+
+      position: absolute;
+      left: -43px;
+      top: 5px;
+
+      width: 14px;
+      height: 14px;
+
+      border-radius: 50%;
+      background: #0071e3;
+
+      box-shadow: 0 0 0 6px #fff;
+    }
+
+    .timeline-year {
+      color: #0071e3;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .timeline h3 {
+      font-size: 28px;
+      margin: 5px 0;
+      letter-spacing: -1px;
+    }
+
+    .timeline p {
+      color: #6e6e73;
+    }
+
+    /* =========================
+       CONTACT
+    ========================== */
+
+    .contact {
+      background: #f5f5f7;
+      text-align: center;
+    }
+
+    .contact h2 {
+      font-size: clamp(48px, 8vw, 90px);
+      letter-spacing: -5px;
+      line-height: 0.95;
+    }
+
+    .contact p {
+      color: #6e6e73;
+      font-size: 20px;
+      margin: 25px auto 35px;
+      max-width: 550px;
+    }
+
+    .socials {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .social {
+      padding: 12px 20px;
+      border-radius: 999px;
+      background: white;
+      border: 1px solid #ddd;
+
+      font-size: 14px;
+      font-weight: 600;
+
+      transition: 0.25s ease;
+    }
+
+    .social:hover {
+      background: #000;
+      color: #fff;
+      transform: translateY(-3px);
+    }
+
+    /* =========================
+       FOOTER
+    ========================== */
+
+    footer {
+      padding: 30px 24px;
+
+      background: #f5f5f7;
+      color: #86868b;
+
+      text-align: center;
+      font-size: 13px;
+    }
+
+    /* =========================
+       SCROLL REVEAL
+    ========================== */
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition:
+        opacity 0.8s ease,
+        transform 0.8s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* =========================
+       RESPONSIVE
+    ========================== */
+
+    @media (max-width: 800px) {
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        padding-top: 130px;
+      }
+
+      .hero h1 {
+        letter-spacing: -4px;
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .skill-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .project-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .project {
+        min-height: 400px;
+      }
+    }
+
+    @media (max-width: 500px) {
+
+      section {
+        padding: 85px 20px;
+      }
+
+      .hero h1 {
+        font-size: 58px;
+      }
+
+      .skill-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .profile-card {
+        min-height: 350px;
+      }
+
+      .project h3 {
+        font-size: 32px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- =========================
+       NAVBAR
+  ========================== -->
+
+  <nav class="nav">
+    <div class="nav-inner">
+
+      <a href="#" class="logo">Alex.</a>
+
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+
+    </div>
+  </nav>
+
+
+  <!-- =========================
+       HERO
+  ========================== -->
+
+  <header class="hero">
+
+    <div class="hero-content reveal">
+
+      <span class="eyebrow">COLLEGE STUDENT • DESIGNER • DEVELOPER</span>
+
+      <h1>Think.<br>Build.<br>Create.</h1>
+
+      <p class="hero-subtitle">
+        I'm Alex, a computer science student turning
+        ambitious ideas into simple, beautiful digital experiences.
+      </p>
+
+      <div class="hero-buttons">
+        <a href="#projects" class="button button-primary">
+          View my work
+        </a>
+
+        <a href="#contact" class="button button-secondary">
+          Let's talk
+        </a>
+      </div>
+
+    </div>
+
+  </header>
+
+
+  <!-- =========================
+       ABOUT
+  ========================== -->
+
+  <section class="about" id="about">
+
+    <div class="container">
+
+      <div class="section-label reveal">
+        ABOUT ME
+      </div>
+
+      <h2 class="section-title reveal">
+        A student with<br>
+        big ideas.
+      </h2>
+
+      <div class="about-grid">
+
+        <div class="about-text reveal">
+
+          <p>
+            I'm a <strong>Computer Science student</strong> passionate
+            about technology, design, and building products that people
+            genuinely enjoy using.
+          </p>
+
+          <br>
+
+          <p>
+            Outside the classroom, I experiment with web development,
+            UI/UX, artificial intelligence, and startup ideas.
+          </p>
+
+        </div>
+
+        <div class="profile-card reveal">
+
+          <div class="profile-avatar">
+            A
+          </div>
+
+          <div>
+            <h3>Alex Johnson</h3>
+            <p>
+              B.Tech Computer Science<br>
+              2024 — 2028
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       SKILLS
+  ========================== -->
+
+  <section class="skills" id="skills">
+
+    <div class="container">
+
+      <div class="section-label reveal">
+        WHAT I DO
+      </div>
+
+      <h2 class="section-title reveal">
+        Skills that<br>
+        make things happen.
+      </h2>
+
+      <div class="skill-grid">
+
+        <div class="skill reveal">
+          <div class="skill-icon">⌘</div>
+          <h3>Web Development</h3>
+          <p>HTML, CSS, JavaScript, React</p>
+        </div>
+
+        <div class="skill reveal">
+          <div class="skill-icon">✦</div>
+          <h3>UI / UX Design</h3>
+          <p>Figma, prototyping, design systems</p>
+        </div>
+
+        <div class="skill reveal">
+          <div class="skill-icon">◉</div>
+          <h3>Programming</h3>
+          <p>Python, Java, C++, algorithms</p>
+        </div>
+
+        <div class="skill reveal">
+          <div class="skill-icon">◌</div>
+          <h3>AI & ML</h3>
+          <p>Machine learning and intelligent apps</p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       PROJECTS
+  ========================== -->
+
+  <section class="projects" id="projects">
+
+    <div class="container">
+
+      <div class="section-label reveal">
+        SELECTED WORK
+      </div>
+
+      <h2 class="section-title reveal">
+        Things I've<br>
+        built.
+      </h2>
+
+      <div class="project-grid">
+
+        <article class="project reveal">
+
+          <div class="project-content">
+
+            <div class="project-number">
+              01 / WEB APP
+            </div>
+
+            <h3>Campus Connect</h3>
+
+            <p>
+              A modern student community platform for sharing
+              events, clubs, notes, and opportunities.
+            </p>
+
+            <a href="#" class="project-link">
+              View project →
+            </a>
+
+          </div>
+
+        </article>
+
+
+        <article class="project reveal">
+
+          <div class="project-content">
+
+            <div class="project-number">
+              02 / AI
+            </div>
+
+            <h3>Study AI</h3>
+
+            <p>
+              An AI-powered study assistant that transforms
+              lecture notes into summaries and quizzes.
+            </p>
+
+            <a href="#" class="project-link">
+              View project →
+            </a>
+
+          </div>
+
+        </article>
+
+
+        <article class="project reveal">
+
+          <div class="project-content">
+
+            <div class="project-number">
+              03 / DESIGN
+            </div>
+
+            <h3>Finance App</h3>
+
+            <p>
+              A minimalist personal finance dashboard designed
+              specifically for college students.
+            </p>
+
+            <a href="#" class="project-link">
+              View project →
+            </a>
+
+          </div>
+
+        </article>
+
+
+        <article class="project reveal">
+
+          <div class="project-content">
+
+            <div class="project-number">
+              04 / OPEN SOURCE
+            </div>
+
+            <h3>Open Notes</h3>
+
+            <p>
+              A collaborative platform where students can
+              create, organize, and share study resources.
+            </p>
+
+            <a href="#" class="project-link">
+              View project →
+            </a>
+
+          </div>
+
+        </article>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       EDUCATION
+  ========================== -->
+
+  <section class="education" id="education">
+
+    <div class="container">
+
+      <div class="section-label reveal">
+        MY JOURNEY
+      </div>
+
+      <h2 class="section-title reveal">
+        Education &<br>
+        experience.
+      </h2>
+
+      <div class="timeline">
+
+        <div class="timeline-item reveal">
+
+          <span class="timeline-year">
+            2024 — PRESENT
+          </span>
+
+          <h3>B.Tech in Computer Science</h3>
+
+          <p>
+            ABC Institute of Technology
+          </p>
+
+          <p>
+            Coursework in data structures, algorithms,
+            databases, artificial intelligence and web technologies.
+          </p>
+
+        </div>
+
+
+        <div class="timeline-item reveal">
+
+          <span class="timeline-year">
+            2025
+          </span>
+
+          <h3>Frontend Developer Intern</h3>
+
+          <p>
+            XYZ Technologies
+          </p>
+
+          <p>
+            Built responsive web interfaces and collaborated
+            with designers to improve user experiences.
+          </p>
+
+        </div>
+
+
+        <div class="timeline-item reveal">
+
+          <span class="timeline-year">
+            2024
+          </span>
+
+          <h3>Hackathon Finalist</h3>
+
+          <p>
+            National Student Hackathon
+          </p>
+
+          <p>
+            Developed an AI-powered productivity tool
+            with a three-person student team.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       CONTACT
+  ========================== -->
+
+  <section class="contact" id="contact">
+
+    <div class="container reveal">
+
+      <div class="section-label">
+        GET IN TOUCH
+      </div>
+
+      <h2>
+        Let's build<br>
+        something great.
+      </h2>
+
+      <p>
+        Have an idea, internship opportunity, or interesting
+        project? I'd love to hear from you.
+      </p>
+
+      <div class="socials">
+
+        <a href="mailto:alex@example.com" class="social">
+          Email
+        </a>
+
+        <a href="#" class="social">
+          LinkedIn
+        </a>
+
+        <a href="#" class="social">
+          GitHub
+        </a>
+
+        <a href="#" class="social">
+          Instagram
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       FOOTER
+  ========================== -->
+
+  <footer>
+    © 2026 Alex Johnson. Designed & built with care.
+  </footer>
+
+
+  <!-- =========================
+       JAVASCRIPT
+  ========================== -->
+
+  <script>
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+
+        entries.forEach((entry) => {
+
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+          }
+
+        });
+
+      },
+      {
+        threshold: 0.12
+      }
+    );
+
+
+    document
+      .querySelectorAll(".reveal")
+      .forEach((element) => observer.observe(element));
+
+
+    /* Slight navbar transparency on scroll */
+
+    window.addEventListener("scroll", () => {
+
+      const nav = document.querySelector(".nav");
+
+      if (window.scrollY > 30) {
+        nav.style.background = "rgba(255,255,255,0.88)";
+      } else {
+        nav.style.background = "rgba(255,255,255,0.72)";
+      }
+
+    });
+
+  </script>
+
+</body>
+</html>
